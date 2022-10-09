@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 {
     easy3d::logging::initialize(true);
 
-#if 1
+#if 0
     if (argc < 3) {
         std::cerr << "usage: \n\t"
                   << argv[0] << "  path_to_images  output_file\n"
