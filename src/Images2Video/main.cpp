@@ -76,7 +76,7 @@ int main(int argc, char **argv)
         std::vector<unsigned char> data;
         int w, h, c;
         if (ImageIO::load(file_name, data, w, h, c, 0, false))
-            encoder.encode(data.data(), w, h, VideoEncoder::PIX_FMT_RGBA_8888);
+            encoder.encode(data.data(), w, h, c == 3 ? VideoEncoder::PIX_FMT_RGB_888 : VideoEncoder::PIX_FMT_RGBA_8888);
     }
     encoder.end();
     return EXIT_SUCCESS;
