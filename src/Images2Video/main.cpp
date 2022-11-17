@@ -24,9 +24,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  ********************************************************************/
 
+#include <iostream>
+
 #include <easy3d/util/file_system.h>
 #include <easy3d/util/progress.h>
-#include <easy3d/util/resources.h>
+#include <easy3d/util/initializer.h>
 #include <easy3d/fileio/image_io.h>
 #include <easy3d/video/video_encoder.h>
 
@@ -34,7 +36,7 @@ using namespace easy3d;
 
 int main(int argc, char **argv)
 {
-    initialize(true);
+    initialize();
 
 #if 0
     if (argc < 3) {
