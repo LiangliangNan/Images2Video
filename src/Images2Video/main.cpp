@@ -25,6 +25,7 @@
  ********************************************************************/
 
 #include <iostream>
+#include <algorithm>
 
 #include <easy3d/util/file_system.h>
 #include <easy3d/util/progress.h>
