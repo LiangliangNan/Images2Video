@@ -70,7 +70,7 @@ int main(int argc, char **argv)
     VideoEncoder encoder;
     encoder.start(output_file, 30, 100 * 1024 * 1024);
     for (std::size_t i = 0; i < image_files.size(); ++i) {
-        print_progress((i + 1) / static_cast<float>(image_files.size()));
+        print_progress(static_cast<float>(i + 1) / static_cast<float>(image_files.size()));
         const std::string file_name = image_dir + "/" + image_files[i];
         if (file_system::extension(file_name) != "png") {
             std::cerr << "file is not an image (only png format is supported): " << file_name << std::endl;
