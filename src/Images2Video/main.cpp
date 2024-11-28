@@ -68,9 +68,8 @@ int main(int argc, char **argv)
     std::sort(image_files.begin(), image_files.end());
 
     VideoEncoder encoder;
-    encoder.begin(output_file, 1288, 928, 30, 10000000);
+    encoder.begin(output_file, 472, 520, 30, 8 * 1024 * 1024); // fps: 30. bitrats: 8 Mbits/sec.
     for (std::size_t i = 0; i < image_files.size(); ++i) {
-        print_progress(static_cast<float>(i + 1) / static_cast<float>(image_files.size()));
         const std::string file_name = image_dir + "/" + image_files[i];
         if (file_system::extension(file_name) != "png") {
             std::cerr << "file is not an image (only png format is supported): " << file_name << std::endl;
