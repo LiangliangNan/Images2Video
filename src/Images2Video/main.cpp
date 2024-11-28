@@ -68,7 +68,7 @@ int main(int argc, char **argv)
     std::sort(image_files.begin(), image_files.end());
 
     VideoEncoder encoder;
-    encoder.start(output_file, 30, 100 * 1024 * 1024);
+    encoder.begin(output_file, 1288, 928, 30, 10000000);
     for (std::size_t i = 0; i < image_files.size(); ++i) {
         print_progress(static_cast<float>(i + 1) / static_cast<float>(image_files.size()));
         const std::string file_name = image_dir + "/" + image_files[i];
@@ -82,6 +82,6 @@ int main(int argc, char **argv)
         if (ImageIO::load(file_name, data, w, h, c, 0, false))
             encoder.encode(data.data(), w, h, c == 3 ? VideoEncoder::PIX_FMT_RGB_888 : VideoEncoder::PIX_FMT_RGBA_8888);
     }
-    encoder.end();
+    encoder.finish();
     return EXIT_SUCCESS;
 }
