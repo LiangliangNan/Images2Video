@@ -67,8 +67,7 @@ int main(int argc, char **argv)
     }
     std::sort(image_files.begin(), image_files.end());
 
-    VideoEncoder encoder;
-    encoder.begin(output_file, 472, 520, 30, 8 * 1024 * 1024); // fps: 30. bitrate: 8 Mbit/sec.
+    VideoEncoder encoder(output_file, 30, 8 * 1024 * 1024); // fps: 30. bitrats: 8 Mbits/sec.
     for (std::size_t i = 0; i < image_files.size(); ++i) {
         const std::string file_name = image_dir + "/" + image_files[i];
         if (file_system::extension(file_name) != "png") {
@@ -81,6 +80,6 @@ int main(int argc, char **argv)
         if (ImageIO::load(file_name, data, w, h, c, 0, false))
             encoder.encode(data.data(), w, h, c == 3 ? VideoEncoder::PIX_FMT_RGB_888 : VideoEncoder::PIX_FMT_RGBA_8888);
     }
-    encoder.finish();
+
     return EXIT_SUCCESS;
 }
