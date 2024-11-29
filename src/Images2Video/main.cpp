@@ -69,6 +69,9 @@ int main(int argc, char **argv)
 
     VideoEncoder encoder(output_file, 30, 8 * 1024 * 1024); // framerate: 30. bitrate: 8 Mbits/sec.
     for (std::size_t i = 0; i < image_files.size(); ++i) {
+#ifdef NDEBUG
+        print_progress((i+1) / static_cast<float>(image_files.size()));
+#endif
         const std::string file_name = image_dir + "/" + image_files[i];
         if (file_system::extension(file_name) != "png") {
             std::cerr << "file is not an image (only png format is supported): " << file_name << std::endl;
